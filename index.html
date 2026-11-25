@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise, Our Nana,Lola,Mama Gemma!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Georgia', serif;
+        }
+        body {
+            background: #0a0a0a;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            text-align: center;
+        }
+        .top-note {
+            color: #888;
+            font-size: 0.95rem;
+            margin-bottom: 60px;
+            letter-spacing: 2px;
+        }
+        h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        .gold-text {
+            color: #907219;
+        }
+        .subtitle {
+color: #ccc;
+            font-size: 1.1rem;
+            max-width: 450px;
+            margin-bottom: 60px;
+            line-height: 1.6;
+        }
+        .play-btn {
+            background: linear-gradient(90deg, #d4b34a, #f0d878);
+            color: #1a1a1a;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 18px 50px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 20px;
+        }
+        .play-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(212, 179, 74, 0.5);
+        }
+        .hint {
+            color: #777;
+            font-size: 0.9rem;
+            margin-bottom: 50px;
+        }
+        .song-info {
+            background: #1a1a1a;
+            padding: 20px 25px;
+            border-radius: 12px;
+            max-width: 450px;
+            border: 1px solid #333;
+        }
+        .song-title {
+color: #785f13;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .song-desc {
+            color: #a78484;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        .photo-container {
+            display: none;
+            max-width: 500px;
+            width: 100%;
+            margin-top: 40px;
+        }
+        .photo {
+            display: none;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .photo.active {
+            display: block;
+        }
+        .photo img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .photo-caption {
+            margin-top: 10px;
+            color: #ccc;
+            font-style: italic;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .playing-indicator {
+            display: none;
+            align-items: center;
+            gap: 8px;
+color: #785f13;
+            margin-bottom: 30px;
+        }
+        .bar {
+            width: 4px;
+            height: 15px;
+            background: #785f13;
+            animation: pulse 0.6s infinite alternate;
+        }
+        .bar:nth-child(2) { animation-delay: 0.2s; }
+        .bar:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes pulse {
+            from { height: 10px; }
+            to { height: 18px; }
+        }
+    </style>
+</head>
+<body>
+
+    <p class="top-note">A little surprise to our lights of our home.</p>
+
+    <div class="playing-indicator" id="playingIndicator">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <span>Playing: When God Made You My Mother</span>
+    </div>
+
+    <h1>Surprise,<br><span class="gold-text">Nana Gemma</span></h1>
+
+    <p class="subtitle">A little album from your family that who loves in you.</p>
+
+    <button class="play-btn" id="playBtn" onclick="startAlbum()">▶ Play our album</button>
+    <p class="hint">One tap — the photos and our song start together.</p>
+<div class="song-info">
+        <div class="song-title">🎵 Song: When God Made You My Mother — Riley Rotch</div>
+        <div class="song-desc">Starts at 0:06· "I Bet You Could've Used A Minute Just A Little Time Alone"</div>
+    </div>
+
+    <!-- Photo Slideshow -->
+    <div class="photo-container" id="photoContainer">
+        <div class="photo active" id="photo0">
+            <img src="photo1.jpg" alt="Memory 1">
+            <p class="photo-caption">— Blessed birthday, Ma! Wala nang mas hihigit pa sa pagmamahal at mga sakripisyo mo para sa amin.</p>
+        </div>
+        <div class="photo" id="photo1">
+            <img src="photo2.jpg" alt="Memory 2">
+            <p class="photo-caption">— From the smallest things you do everyday to the biggest decisions you make for our family, ramdam na ramdam namin kung gaano ka ka-selfless.</p>
+        </div>
+        <div class="photo" id="photo2">
+            <img src="photo3.jpg" alt="Memory 3">
+            <p class="photo-caption">— Hindi man namin nasasabi palagi, pero sobrang thankful kami na ikaw ang naging nanay namin.</p>
+        </div>
+        <div class="photo" id="photo3">
+            <img src="photo4.jpg" alt="Memory 4">
+            <p class="photo-caption">—"You are our safe space, our number one cheerleader, and the heart of our home."</p>
+    </div>
+    <div class="photo" id="photo4">
+            <img src="photo5.jpg" alt="Memory 5">
+            <p class="photo-caption">—"As you celebrate another year of life.</p>"
+    </div>
+    <div class="photo" id="photo5">
+            <img src="photo6.jpg" alt="Memory 6">
+            <p class="photo-caption">—"Our biggest wish for you is good health,peace of mind, and genuine happiness."</p> 
+    </div>
+   
+<div class="photo" id="photo6">
+            <img src="photo7.jpg" alt="Memory 7">
+            <p class="photo-caption">—"Thank you for every lesson. We love you so much Na."</p>"
+    </div>
+<div class="photo" id="photo7">
+            <img src="photo8.jpg" alt="Memory 8">
+            <p class="photo-caption">—"You are our inspiration, our role model, and the reason we are who we are."</p>
+    </div>
+    <audio id="bgMusic">
+        <source src="song.mp3" type="audio/mpeg">
+    
+
+    <script>
+        let albumStarted = false;
+        let currentPhoto = 0;
+        const photos = document.querySelectorAll('.photo');
+
+        function startAlbum() {
+            if (albumStarted) return;
+            albumStarted = true;
+
+            // Play music
+            const music = document.getElementById('bgMusic');
+            music.currentTime = 96; // Start at 1:36
+            music.play();
+
+            // Show playing indicator
+            document.getElementById('playingIndicator').style.display = 'flex';
+            
+            // Hide play button, show photos
+            document.getElementById('playBtn').style.display = 'none';
+            document.getElementById('photoContainer').style.display = 'block';
+
+            // Auto-slide photos every 4 seconds
+            setInterval(nextPhoto, 4000);
+        }
+
+        function nextPhoto() {
+            photos[currentPhoto].classList.remove('active');
+            currentPhoto = (currentPhoto + 1) % photos.length;
+            photos[currentPhoto].classList.add('active');
+        }
+    </script>
+    
+</body>
+</html>
